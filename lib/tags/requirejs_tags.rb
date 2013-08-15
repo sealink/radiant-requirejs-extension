@@ -32,7 +32,7 @@ module RequirejsTags
       JS
     else
       '<script data-main="/javascripts/main" src="/javascripts/require.js"></script>'
-    end
+    end.html_safe
   end
 
 end
