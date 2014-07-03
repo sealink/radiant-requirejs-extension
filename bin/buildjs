@@ -3,7 +3,9 @@ res = `which nodejs`
 node_js = res == '' ? 'node' : 'nodejs'
 
 # this one copies everything... :(
-`#{node_js} ./public/javascripts/jsbuild/r.js -o ./public/javascripts/main.prod.build_config.js`
+command = "#{node_js} ./public/javascripts/jsbuild/r.js -o ./public/javascripts/main.prod.build_config.js"
+puts command
+puts `#{command}`
 
 # Do it directly
 #`#{node_js} ./public/javascripts/build-tools/r.js -o name=src/application out=build/application.js baseUrl=public/javascripts`
