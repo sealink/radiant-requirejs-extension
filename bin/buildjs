@@ -2,8 +2,10 @@
 res = `which nodejs`
 node_js = res == '' ? 'node' : 'nodejs'
 
+file_name = ARGV[0] || 'main'
+
 # this one copies everything... :(
-command = "#{node_js} ./public/javascripts/jsbuild/r.js -o ./public/javascripts/main.prod.build_config.js"
+command = "#{node_js} ./public/javascripts/jsbuild/r.js -o ./public/javascripts/#{file_name}.prod.build_config.js"
 puts command
 puts `#{command}`
 
