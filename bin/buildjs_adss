@@ -1,0 +1,11 @@
+# Figure out the name of the nodejs binary, as it's changed from node to nodejs since Precise
+res = `which nodejs`
+node_js = res == '' ? 'node' : 'nodejs'
+
+# this one copies everything... :(
+command = "#{node_js} ./public/javascripts/jsbuild/r.js -o ./public/javascripts/adss.prod.build_config.js"
+puts command
+puts `#{command}`
+
+# Do it directly
+#`#{node_js} ./public/javascripts/build-tools/r.js -o name=src/application out=build/application.js baseUrl=public/javascripts`
