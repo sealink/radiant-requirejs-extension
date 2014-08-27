@@ -17,8 +17,9 @@ module RequirejsTags
     # and use that with v query param appended as an urlArgs
     #
     # NOTE: requirejs looks for a 'window.require' for additional config
+    script = tag.attr['script'] || 'main'
     if RAILS_ENV == 'production'
-      js_modified_at = File.mtime("./public/javascripts/main.min.js").strftime("%s")
+      js_modified_at = File.mtime("./public/javascripts/#{script}.min.js").strftime("%s")
       <<-JS
 <script type='text/javascript'>
   //<![CDATA[
@@ -28,10 +29,10 @@ module RequirejsTags
     };
   //]]>
 </script>
-<script data-main="main.min.js" src="/javascripts/require.js"></script>
+<script data-main="#{script}.min.js" src="/javascripts/require.js"></script>
       JS
     else
-      '<script data-main="/javascripts/main" src="/javascripts/require.js"></script>'
+      "<script data-main='/javascripts/#{script}' src='/javascripts/require.js'></script>"
     end.html_safe
   end
 
